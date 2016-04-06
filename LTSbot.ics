@@ -1,0 +1,131 @@
+on *:JOIN:#LTS: {
+/msg #LTS 0,1 Hello $nick on offcial LTS Channel. More information, please write !cmd
+}
+
+on 5:JOIN:#LTS: { 
+
+/msg #LTS 0,1 Super Administrator is here.
+
+}
+
+on *:TEXT:!cmd:#LTS: {
+/msg #LTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/msg #LTS !news !status !twich.tv !fb !contact !admins !devlog
+/msg #LTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+}
+
+on *:TEXT:!news:#LTS: {
+/msg #LTS 0,1 IRC Script Building 1,0
+}
+
+on *:TEXT:!status:#LTS: {
+if ($mode0 == 1) goto one { //*Zmienna sygnalizujaca, czy odpalony zostal skrypt LTS mode. $mode0 równa sie 1, oznacza true, na odwrót false.
+:one
+/msg #LTS  0,1LTS Duel MiniCups Series # %numberLTS : ON                                                                //* $numberLTS Zmienna sygnalizujaca, ktory to juz turniej. Zadeklarowana w LTSmode. $status, zmieena zadeklarowana w LTSmode.
+/msg #LTS  0,1 %player/%gamer                                  //* $gamer= Makstmalna ilosc graczy zadeklarowana w LTS Mode. $player - wyswietla zawartosc ilosci zmiennych zadeklarowanych $modeplayer.
+/msg #LTS  0,1 Start at %Whichtime                             //*Zmienna, sygnalizujaca o ktorej godzinie rozpocznie sie turniej
+halt
+}
+ELSE {
+:two
+/msg #LTS 0,1 Status: OFF
+}
+}
+
+on *:TEXT:!twich.tv:#LTS: {
+/msg #LTS
+}
+
+on *:TEXT:!fb:#LTS: {
+/msg #LTS https://www.facebook.com/groups/lts.soldat/
+}
+
+
+on *:TEXT:!contact:#LTS: {
+/msg #LTS 0,1 GG:7772066
+/msg #LTS 0,1 Email: bxxta.lts@gmail.com
+}
+on *:TEXT:!admins:#LTS: {
+/msg #LTS 0,1  .::: Bxxta Kieca Punisherk Kira ::.
+}
+
+on *:TEXT:!devlog:#LTS: {
+/msg #LTS Dev.0.1: Added !cmd and !status
+} 
+
+on *:TEXT:!LTS *:#LTS: {
+/set %mode0 1
+/set %gamer 8
+/set %Whichtime $2
+/set %numberLTS 5
+/set %Status On 
+/msg #LTS LTSmode Script Active
+/msg #LTS LTS Status: %Status
+/msg #LTS Players: %gamer
+/msg #LTS Start at: %Whichtime
+/msg #LTS Number: 5
+/timer 1 1 120 /msg #LTS 0,1 Register on LTS Duel MiniCups Series #$4 is started. Join on #LTS and write !add if you want play.
+/timer 2 1 120 /msg #polaks 0,1 Register on LTS Duel MiniCups Series #$4 is started. Join on #LTS and write !add if you want play.
+/timer 3 1 120 /msg #soldat.match 0,1 Register on LTS Duel MiniCups Series #$4 is started. Join on #LTS and write !add if you want play.
+/timer 4 1  $2  /msg #LTS 0,1 LTS Duel MiniCups Series #$4 is started. Register is closed.
+/timer 5 1  $2  /msg #polaks 0,1 LTS Duel MiniCups Series #$4 is started. Register is closed.
+/timer 6 1  $2  /msg #soldat.match 0,1 LTS Duel MiniCups Series #$4 is started. Register is closed.
+/timer 1 off
+/timer 2 off
+/timer 3 off
+/timer 4 off
+/timer 5 off
+/timer 6 off
+/set %mode1 1 //*Sygnal inicjujacy skrypt !add
+}
+
+
+on *:TEXT:!reset:#LTS: {
+/msg $nick Restarting LTS Script.
+/timer 1 stop
+/msg $nick Timer1 OFF
+/timer 2 stop
+/msg $nick Timer2 OFF
+/timer 3 stop
+/msg $nick Timer3 OFF
+/timer 4 stop
+/msg $nick Timer4 OFF
+/timer 5 stop
+/msg $nick Timer5 OFF
+/timer 6 stop
+/unset %mode0
+/unset %mode1 
+/unset %gamer
+/unset %Whichtime
+/unset %numberLTS 
+/unset %%status
+/msg $nick Veriables deleted
+/msg $nick Done. 
+}
+
+on: *:TEXT:!add:#LTS: {
+IF ((%mode0 == 1) || (%mode1 == 1)) goto one {
+:one
+IF (%gamer == 8) goto two {
+:two
+/set %Addplayer1 $nick //* Zmienna deklarujaca pierwsza zadeklarowana jako gracz.
+/msg #LTS Duel MiniCups Series %numberLTS: [ %Addplayer]
+:three
+ELSE
+if (%gamer == 16) goto three    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
